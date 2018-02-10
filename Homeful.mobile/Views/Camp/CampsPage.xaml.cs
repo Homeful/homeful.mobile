@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
+namespace Homeful.mobile
+{
+    public partial class CampsPage : ContentPage
+    {
+        CampsViewModel viewModel;
+
+        public CampsPage()
+        {
+            InitializeComponent();
+
+            BindingContext = viewModel = new CampsViewModel();
+        }
+
+        async void OnCampSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var camp = args.SelectedItem as Camp;
+            if (camp == null)
+                return;
+
+            await Navigation.PushAsync(new CampDetailPage(new CampDetailViewModel(camp)));
+
+            // Manually deselect camp
+            CampsListView.SelectedItem = null;
+        }
+
+        async void AddCamp_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewCampPage());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Camps.Count == 0)
+                viewModel.LoadCampsCommand.Execute(null);
+        }
+    }
+}
