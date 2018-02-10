@@ -5,8 +5,19 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
+            <Label Text="Name" FontSize="Medium" />
             <Entry Text="{Binding Route.Name}" FontSize="Small" />
+            <ListView x:Name="CampsListView" ItemsSource="{Binding CampSelection.Camps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding CampSelection.LoadCampsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="{Binding CampSelection.OnCampSelected}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
