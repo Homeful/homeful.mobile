@@ -77,7 +77,7 @@ namespace Homeful.mobile
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Item>> ListAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }
@@ -137,7 +137,7 @@ namespace Homeful.mobile
             return await Task.FromResult(camps.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Camp>> GetAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Camp>> ListAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(camps);
         }
@@ -199,7 +199,7 @@ namespace Homeful.mobile
             return await Task.FromResult(routes.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Route>> GetAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Route>> ListAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(routes);
         }

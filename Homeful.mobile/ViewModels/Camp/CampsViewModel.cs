@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Homeful.mobile
             try
             {
                 Camps.Clear();
-                var camps = await CampDataStore.GetAsync(true);
+                IEnumerable<Camp> camps = await CampDataStore.ListAsync(true);
                 foreach (var camp in camps)
                 {
                     Camps.Add(camp);

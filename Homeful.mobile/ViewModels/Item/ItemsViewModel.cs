@@ -36,7 +36,7 @@ namespace Homeful.mobile
             try
             {
                 Items.Clear();
-                var items = await ItemDataStore.GetAsync(true);
+                var items = await ItemDataStore.ListAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);

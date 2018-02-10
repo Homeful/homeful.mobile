@@ -48,6 +48,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Item\ItemBaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Camp\CampBaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\FirebaseDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IFirebaseItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\CampDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

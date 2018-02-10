@@ -9,7 +9,7 @@ namespace Homeful.mobile
         Task<bool> UpdateAsync(T item);
         Task<bool> DeleteAsync(string id);
         Task<T> GetAsync(string id);
-        Task<IEnumerable<T>> GetAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> ListAsync(bool forceRefresh = false);
 
     }
 }

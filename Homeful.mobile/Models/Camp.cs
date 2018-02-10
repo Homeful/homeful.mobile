@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Homeful.mobile
 {
-    public class Camp
+    public class Camp : IFirebaseItem
     {
         public string Id { get; set; }
         public string Name { get; set; }

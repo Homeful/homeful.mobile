@@ -1,13 +1,12 @@
 ﻿using System;
-
 using Xamarin.Forms;
 
 namespace Homeful.mobile
 {
     public partial class App : Application
     {
-        public static bool UseMockDataStore = true;
-        public static string BackendUrl = "https://localhost:5000";
+        public static bool UseMockDataStore = false;
+        public static string BackendUrl = "https://homeful-d9f3c.firebaseio.com/";
 
         public App()
         {
@@ -21,9 +20,9 @@ namespace Homeful.mobile
             }
             else
             {
-                DependencyService.Register<ItemCloudDataStore>();
-                DependencyService.Register<CampCloudDataStore>();
-                DependencyService.Register<RouteCloudDataStore>();
+                //DependencyService.Register<ItemCloudDataStore>();
+                DependencyService.Register<CampDataStore>();
+                //DependencyService.Register<RouteCloudDataStore>();
             }
 
             if (Device.RuntimePlatform == Device.iOS)
