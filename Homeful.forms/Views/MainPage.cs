@@ -23,13 +23,8 @@ namespace Homeful.mobile
                     {
                         Title = "Camps"
                     };
-                    aboutPage = new NavigationPage(new AboutPage())
-                    {
-                        Title = "About"
-                    };
                     routesPage.Icon = "tab_routes.png";
                     campsPage.Icon = "tab_camps.png";
-                    aboutPage.Icon = "tab_about.png";
                     break;
                 default:
                     routesPage = new RoutesPage()
@@ -40,15 +35,10 @@ namespace Homeful.mobile
                     {
                         Title = "Camps"
                     };
-                    aboutPage = new AboutPage()
-                    {
-                        Title = "About"
-                    };
                     break;
             }
             Children.Add(routesPage);
             Children.Add(campsPage);
-            Children.Add(aboutPage);
 
             Title = Children[0].Title;
         }
