@@ -198,6 +198,10 @@
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\map_marker.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\map_marker.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\map_marker.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map_marker.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Homeful.forms\Homeful.forms.csproj">

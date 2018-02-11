@@ -6,17 +6,22 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Name" FontSize="Medium" />
-            <Entry Text="{Binding Camp.Name}" FontSize="Small" />
-            <Grid>
+            <Grid> 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions> 
+                <Label Text="Name" FontSize="Medium" Grid.Row="0" />
+                <Entry Text="{Binding Camp.Name}" FontSize="Medium" Grid.Row="1" />
                 <maps:Map WidthRequest="320" HeightRequest="200"
                     x:Name="MyMap"
                     IsShowingUser="true"
                     MapType="Hybrid"
+                    Grid.Row="2" Grid.RowSpan="2"
                 />
-                <Label Text="O" VerticalTextAlignment="Center" TextColor="Red" HorizontalTextAlignment="Center" InputTransparent="true"></Label>
+                <Image Source="map_marker.png" Grid.Row="2" VerticalOptions="End" HorizontalOptions="Center" InputTransparent="true" />
             </Grid>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
