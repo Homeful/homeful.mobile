@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Firebase.Database;
 
 namespace Homeful.mobile
 {
@@ -19,11 +20,11 @@ namespace Homeful.mobile
 
         async void OnRouteSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Route;
+            var item = args.SelectedItem as FirebaseObject<Route>;
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new RouteDetailPage(new RouteDetailViewModel(item)));
+            await Navigation.PushAsync(new RouteDetailPage(new RouteDetailViewModel(item.Object)));
 
             // Manually deselect item
             RoutesListView.SelectedItem = null;
