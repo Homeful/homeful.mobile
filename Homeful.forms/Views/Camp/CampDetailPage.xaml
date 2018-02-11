@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.CampDetailPage" Title="{Binding Title}">
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="{Binding Camp.Name}" FontSize="Medium" />
-    </StackLayout>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.CampDetailPage" 
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Title="{Binding Title}">
+   <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Next" Command="{Binding LoadNextCamp}" />
+    </ContentPage.ToolbarItems>    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <maps:Map
+            HeightRequest="200"
+            x:Name="MyMap"
+            MapType="Hybrid"
+            Grid.Row="0" />
+        
+        <TableView Intent="Form" HasUnevenRows="true" Grid.Row="1">
+            <TableRoot>
+                <TableSection Title="Address">
+                    <ViewCell Height="50">
+                        <Button Clicked="Handle_Clicked" Text="Navigate">
+                        </Button>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>        
+    </Grid>
+
 </ContentPage>

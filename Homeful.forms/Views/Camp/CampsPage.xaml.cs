@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Firebase.Database;
 using Xamarin.Forms;
 
 namespace Homeful.mobile
@@ -20,7 +20,7 @@ namespace Homeful.mobile
 
         async void OnCampSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var camp = args.SelectedItem as Camp;
+            var camp = args.SelectedItem as FirebaseObject<Camp>;
             if (camp == null)
                 return;
 

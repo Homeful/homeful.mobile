@@ -38,7 +38,7 @@ namespace Homeful.mobile
 
         public async Task<IEnumerable<FirebaseObject<T>>> ListAsync(bool forceRefresh = false)
         {
-            if (forceRefresh)
+            if (forceRefresh || items.Count() == 0)
             {
                 items = (await firebase.Child($"{Path}").OnceAsync<T>()).ToList();
             }
@@ -82,6 +82,16 @@ namespace Homeful.mobile
             }
 
             return default(T);
+        }
+
+        public async Task<FirebaseObject<T>> GetObjectAsync(string id)
+        {
+            if (id != null && CrossConnectivity.Current.IsConnected)
+            {
+                return (await firebase.Child($"{Path}").OnceAsync<T>()).First(c => c.Key == id);
+            }
+
+            return default(FirebaseObject<T>);
         }
 
         public async Task<FirebaseObject<T>> AddAsync(T item)
