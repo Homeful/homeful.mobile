@@ -21,6 +21,9 @@ namespace Homeful.mobile
             MessagingCenter.Subscribe<NewRoutePage, Route>(this, "AddRoute", async (obj, route) =>
             {
                 var _route = route as Route;
+                _route.CreatedAt = DateTime.Now;
+                _route.ModifiedAt = DateTime.Now;
+
                 Routes.Add(_route);
                 await RouteDataStore.AddAsync(_route);
             });

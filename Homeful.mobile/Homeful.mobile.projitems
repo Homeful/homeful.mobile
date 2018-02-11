@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Route\RouteDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\Route\NewRouteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\RouteDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />

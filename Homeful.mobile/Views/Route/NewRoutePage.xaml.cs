@@ -13,8 +13,6 @@ namespace Homeful.mobile
             InitializeComponent();
 
             BindingContext = viewModel = new NewRouteViewModel();
-
-            viewModel.Route.Name = DateTime.Now.ToString("MM/dd/yyyy");
         }
 
         async void Save_Clicked(object sender, EventArgs e)

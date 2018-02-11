@@ -22,6 +22,7 @@ namespace Homeful.mobile
             {
                 //DependencyService.Register<ItemCloudDataStore>();
                 DependencyService.Register<CampDataStore>();
+                DependencyService.Register<RouteDataStore>();
                 //DependencyService.Register<RouteCloudDataStore>();
             }
 

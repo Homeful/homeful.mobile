@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace Homeful.mobile
 {
-    public class Route
+    public class Route : IFirebaseItem
     {
         public string Id { get; set; }
         public string Name { get; set; }

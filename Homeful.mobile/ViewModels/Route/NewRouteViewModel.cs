@@ -6,12 +6,13 @@ namespace Homeful.mobile
     public class NewRouteViewModel
     {
         public CampsViewModel CampSelection;
-        public Route Route;
+        public Route Route { get; set; }
 
         public NewRouteViewModel()
         {
             CampSelection = new CampsViewModel();
             Route = new Route();
+            Route.Name = DateTime.Now.ToString("MM/dd/yyyy");
         }
 
         public void OnCampSelected(Camp camp)
