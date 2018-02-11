@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Homeful.mobile
@@ -23,7 +24,7 @@ namespace Homeful.mobile
 
         void OnCampSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var camp = args.SelectedItem as Camp;
+            var camp = args.SelectedItem as SelectCampViewModel;
             if (camp == null)
                 return;
 
@@ -37,8 +38,8 @@ namespace Homeful.mobile
         {
             base.OnAppearing();
 
-            if (viewModel.CampSelection.Camps.Count == 0)
-                viewModel.CampSelection.LoadCampsCommand.Execute(null);
+            if (viewModel.SelectCampsViewModel.SelectCamps.Count() == 0)
+                viewModel.SelectCampsViewModel.LoadCampsCommand.Execute(null);
         }
     }
 }

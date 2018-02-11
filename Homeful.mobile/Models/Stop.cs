@@ -5,6 +5,6 @@ namespace Homeful.mobile
     {
         public Camp Camp { get; set; }
         public bool Complete { get; set; }
-        public DateTime CompletedAt { get; set; }
+        public DateTime? CompletedAt { get; set; }
     }
 }
