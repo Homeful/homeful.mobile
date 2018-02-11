@@ -40,7 +40,8 @@ namespace Homeful.mobile
         private void RemoveCampFromRoute(SelectCampViewModel camp)
         {
             camp.Selected = false;
-            var stop = Route.Stops.FirstOrDefault(s => s.Camp.Id == camp.Camp.Key);
+            // TODO: use Id instead of Name - Id is null currently
+            var stop = Route.Stops.FirstOrDefault(s => s.Camp.Name == camp.Camp.Object.Name);
             if (stop != null)
             {
                 Route.Stops.Remove(stop);
@@ -48,7 +49,8 @@ namespace Homeful.mobile
         }
         private bool CampIsInRoute(SelectCampViewModel camp)
         {
-            return Route.Stops.Exists(s => s.Camp.Id == camp.Camp.Key);
+            // TODO: use Id instead of Name - Id is null currently
+            return Route.Stops.Exists(s => s.Camp.Name == camp.Camp.Object.Name);
         }
     }
 }
