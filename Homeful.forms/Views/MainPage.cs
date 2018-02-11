@@ -27,8 +27,8 @@ namespace Homeful.mobile
                     {
                         Title = "About"
                     };
-                    routesPage.Icon = "tab_feed.png";
-                    campsPage.Icon = "tab_feed.png";
+                    routesPage.Icon = "tab_routes.png";
+                    campsPage.Icon = "tab_camps.png";
                     aboutPage.Icon = "tab_about.png";
                     break;
                 default:
