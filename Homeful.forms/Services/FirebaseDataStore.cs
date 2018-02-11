@@ -40,7 +40,7 @@ namespace Homeful.mobile
         {
             if (forceRefresh || items.Count() == 0)
             {
-                items = (await firebase.Child($"{Path}").OnceAsync<T>()).ToList();
+                items = await firebase.Child($"{Path}").OnceAsync<T>();
             }
 
             return items;

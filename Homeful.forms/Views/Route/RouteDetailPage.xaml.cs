@@ -29,9 +29,11 @@ namespace Homeful.mobile
 
             BindingContext = this.viewModel = viewModel;
         }
-        void OnStopSelected(object sender, SelectedItemChangedEventArgs args)
+        async void OnStopSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            // TODO: go to camp
+            Stop stop = args.SelectedItem as Stop;
+
+            await Navigation.PushAsync(new CampDetailPage(new CampDetailViewModel(viewModel.Route.Id, stop.Camp.Id)));
         }
     }
 }

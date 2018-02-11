@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.CampDetailPage" 
-    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Title="{Binding Title}">
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" Title="{Binding Camp.Object.Name}">
    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Next" Command="{Binding LoadNextCamp}" />
+        <ToolbarItem Text="Next" Command="{Binding LoadNextCamp}" IsEnabled="{Binding NextAvailable}" />
     </ContentPage.ToolbarItems>    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Route">
+                    <TextCell Text="{Binding Route.Object.Name}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
 
         <maps:Map
             HeightRequest="200"
             x:Name="MyMap"
             MapType="Hybrid"
-            Grid.Row="0" />
+            Grid.Row="1" />
         
-        <TableView Intent="Form" HasUnevenRows="true" Grid.Row="1">
+        <TableView Intent="Form" Grid.Row="2">
             <TableRoot>
                 <TableSection Title="Address">
                     <ViewCell Height="50">

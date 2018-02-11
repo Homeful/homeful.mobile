@@ -7,6 +7,14 @@ namespace Homeful.mobile
 {
     public partial class CampDetailPage : ContentPage
     {
+        void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if(viewModel.Camp != null)
+            {
+                InitializeAsync();
+            }
+        }
+
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             string location = $"{viewModel.Camp.Object.Location.Lat}, {viewModel.Camp.Object.Location.Lng.ToString()}";
@@ -49,22 +57,29 @@ namespace Homeful.mobile
 
             BindingContext = this.viewModel = viewModel;
 
-            if (viewModel.Camp.Object.Location != null) 
-            {
-                var position = new Position(viewModel.Camp.Object.Location.Lat, viewModel.Camp.Object.Location.Lng);
-                MyMap.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
-                    position,
-                    new Distance(1000)
-                ));
+            viewModel.PropertyChanged += ViewModel_PropertyChanged;
 
-                var pin = new Pin
-                {
-                    Type = PinType.Place,
-                    Position = position,
-                    Label = viewModel.Camp.Object.Name
-                };
-                MyMap.Pins.Add(pin);
+            if (viewModel?.Camp?.Object?.Location != null) 
+            {
+                InitializeAsync();
             }
+        }
+
+        private void InitializeAsync()
+        {
+            var position = new Position(viewModel.Camp.Object.Location.Lat, viewModel.Camp.Object.Location.Lng);
+            MyMap.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+                position,
+                new Distance(1000)
+            ));
+
+            var pin = new Pin
+            {
+                Type = PinType.Place,
+                Position = position,
+                Label = viewModel.Camp.Object.Name
+            };
+            MyMap.Pins.Add(pin);
         }
     }
 }

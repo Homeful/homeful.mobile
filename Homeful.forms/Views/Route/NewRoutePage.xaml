@@ -17,7 +17,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding Camp.Object.Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                <Label Grid.Column="1" Text="✔" IsVisible="{Binding Selected}" />
+                                <Switch Grid.Column="1" IsToggled="{Binding Selected}" InputTransparent="true" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
