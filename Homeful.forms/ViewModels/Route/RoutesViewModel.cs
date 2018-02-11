@@ -24,7 +24,7 @@ namespace Homeful.mobile
                 _route.CreatedAt = DateTime.Now;
                 _route.ModifiedAt = DateTime.Now;
 
-                Routes.Add(await RouteDataStore.AddAsync(_route));
+                await RouteDataStore.AddAsync(_route);
             });
         }
 

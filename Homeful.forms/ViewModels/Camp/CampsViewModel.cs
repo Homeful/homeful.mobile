@@ -23,7 +23,7 @@ namespace Homeful.mobile
             MessagingCenter.Subscribe<NewCampPage, Camp>(this, "AddCamp", async (obj, camp) =>
             {
                 var _camp = camp as Camp;
-                Camps.Add(await CampDataStore.AddAsync(_camp));
+                await CampDataStore.AddAsync(_camp);
             });
         }
 
