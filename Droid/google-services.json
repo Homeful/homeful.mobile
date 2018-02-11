@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "542192151632",
+    "firebase_url": "https://homeful-d9f3c.firebaseio.com",
+    "project_id": "homeful-d9f3c",
+    "storage_bucket": "homeful-d9f3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542192151632:android:45e7a47dbb9b8c0d",
+        "android_client_info": {
+          "package_name": "com.homeful.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542192151632-p8ht1330kd8m7bmv0im45grj3ggmb7g2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzY2LHQS1ll_9c4ukuM-rGa_820Y8qJBU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

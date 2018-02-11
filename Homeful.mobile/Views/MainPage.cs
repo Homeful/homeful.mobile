@@ -10,6 +10,7 @@ namespace Homeful.mobile
         {
             Page campsPage = null;
             Page aboutPage = null;
+            Page loginPage = null;
 
             switch (Device.RuntimePlatform)
             {
@@ -22,6 +23,11 @@ namespace Homeful.mobile
                     {
                         Title = "About"
                     };
+                    loginPage = new NavigationPage(new LoginView())
+                    {
+                        Title = "Login"
+                    };
+
                     campsPage.Icon = "tab_feed.png";
                     aboutPage.Icon = "tab_about.png";
                     break;
@@ -35,11 +41,18 @@ namespace Homeful.mobile
                     {
                         Title = "About"
                     };
+
+                    loginPage = new LoginView()
+                    {
+                        Title = "Login"
+                    };
+
                     break;
             }
 
             Children.Add(campsPage);
             Children.Add(aboutPage);
+            Children.Add(loginPage);
 
             Title = Children[0].Title;
         }

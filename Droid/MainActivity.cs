@@ -7,6 +7,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms;
+using Firebase;
 
 namespace Homeful.mobile.Droid
 {
@@ -15,8 +17,11 @@ namespace Homeful.mobile.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            DependencyService.Register<AndroidLoginService>();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
+            FirebaseApp.InitializeApp(this);
 
             base.OnCreate(bundle);
 
