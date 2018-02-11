@@ -7,6 +7,7 @@ namespace Homeful.mobile
         public string Name { get; set; }
         public Location Location { get; set; }
     }
+
     public class Location
     {
         public double Lat { get; set; }

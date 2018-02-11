@@ -1,4 +1,6 @@
 ﻿using System;
+using Firebase.Database;
+
 namespace Homeful.mobile
 {
     public class Stop

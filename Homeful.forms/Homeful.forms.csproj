@@ -72,12 +72,30 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Services\RouteDataStore.cs" />
+    <Compile Include="Views\Route\NewRoutePage.xaml.cs">
+      <DependentUpon>NewRoutePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Route\RouteDetailPage.xaml.cs">
+      <DependentUpon>RouteDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Route\RoutesPage.xaml.cs">
+      <DependentUpon>RoutesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Route\NewRouteViewModel.cs" />
+    <Compile Include="ViewModels\Route\RouteBaseViewModel.cs" />
+    <Compile Include="ViewModels\Route\RouteDetailViewModel.cs" />
+    <Compile Include="ViewModels\Route\RoutesViewModel.cs" />
+    <Compile Include="ViewModels\Camp\SelectCampViewModel.cs" />
+    <Compile Include="ViewModels\Camp\SelectCampsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="Views\Route\" />
+    <Folder Include="ViewModels\Route\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AboutPage.xaml" />
@@ -97,6 +115,18 @@
     <EmbeddedResource Include="Views\Item\ItemsPage.xaml" />
     <EmbeddedResource Include="Views\Item\NewItemPage.xaml" />
     <EmbeddedResource Include="App.xaml" />
+    <EmbeddedResource Include="Views\Route\NewRoutePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Route\RouteDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Route\RoutesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -137,6 +167,15 @@
     </Reference>
     <Reference Include="PropertyChanged">
       <HintPath>..\packages\PropertyChanged.Fody.2.2.5\lib\netstandard1.0\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\packages\Xamarin.Forms.Maps.2.5.0.122203\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Geolocator.4.2.0\lib\netstandard1.0\Plugin.Geolocator.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>..\packages\Xam.Plugin.Geolocator.4.2.0\lib\netstandard1.0\Plugin.Geolocator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
