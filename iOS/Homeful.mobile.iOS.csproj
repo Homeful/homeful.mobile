@@ -152,6 +152,11 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\MapMarker.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\MapMarker.imageset\marker.png" />
+    <ImageAsset Include="Assets.xcassets\MapMarker.imageset\map_marker.png" />
+    <ImageAsset Include="Assets.xcassets\MapMarker.imageset\map_marker%402x.png" />
+    <ImageAsset Include="Assets.xcassets\MapMarker.imageset\map_marker%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />
@@ -169,6 +174,9 @@
     <BundleResource Include="Resources\tab_routes.png" />
     <BundleResource Include="Resources\tab_routes%402x.png" />
     <BundleResource Include="Resources\tab_routes%403x.png" />
+    <BundleResource Include="Resources\map_marker.png" />
+    <BundleResource Include="Resources\map_marker%402x.png" />
+    <BundleResource Include="Resources\map_marker%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
@@ -187,6 +195,9 @@
       <Project>{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}</Project>
       <Name>Homeful.forms</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\MapMarker.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets')" />
