@@ -6,24 +6,26 @@
     </ContentPage.ToolbarItems>    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TableView Intent="Form">
+
+        <TableView Intent="Form" HasUnevenRows="true" RowHeight="50" IsVisible="{Binding RouteAvailable}" Grid.Row="0" HeightRequest="100">
             <TableRoot>
                 <TableSection Title="Route">
                     <TextCell Text="{Binding Route.Object.Name}" />
                 </TableSection>
             </TableRoot>
         </TableView>
-
+        
         <maps:Map
-            HeightRequest="200"
             x:Name="MyMap"
             MapType="Hybrid"
             Grid.Row="1" />
+
+
         
         <TableView Intent="Form" Grid.Row="2">
             <TableRoot>

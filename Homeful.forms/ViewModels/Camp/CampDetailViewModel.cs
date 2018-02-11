@@ -9,8 +9,27 @@ namespace Homeful.mobile
     public class CampDetailViewModel : CampBaseViewModel
     {
         public FirebaseObject<Camp> Camp { get; set; }
-        public FirebaseObject<Route> Route { get; set; }
+        private FirebaseObject<Route> _route = null;
+        public FirebaseObject<Route> Route { 
+            get 
+            {
+                return _route;
+            }
+            set
+            {
+                SetProperty(ref _route, value);
+            }
+        }
 
+        public bool RouteAvailable
+        {
+            get 
+            {
+                return _route != null;    
+            }    
+        }
+
+ 
         public ICommand LoadNextCamp { get; set; }
         public bool NextAvailable { get; set; } = false;
 
