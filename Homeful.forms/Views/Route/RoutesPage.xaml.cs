@@ -24,7 +24,7 @@ namespace Homeful.mobile
             if (item == null)
                 return;
 
-            await Navigation.PushAsync(new RouteDetailPage(new RouteDetailViewModel(item.Object)));
+            await Navigation.PushAsync(new RouteDetailPage(new RouteDetailViewModel(item.Key)));
 
             // Manually deselect item
             RoutesListView.SelectedItem = null;

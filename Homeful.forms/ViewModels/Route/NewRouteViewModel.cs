@@ -30,6 +30,7 @@ namespace Homeful.mobile
         private void AddCampToRoute(SelectCampViewModel camp)
         {
             camp.Selected = true;
+            camp.Camp.Object.Id = camp.Camp.Key;
             var stop = new Stop()
             {
                 Complete = false,
@@ -41,7 +42,7 @@ namespace Homeful.mobile
         {
             camp.Selected = false;
             // TODO: use Id instead of Name - Id is null currently
-            var stop = Route.Stops.FirstOrDefault(s => s.Camp.Name == camp.Camp.Object.Name);
+            var stop = Route.Stops.FirstOrDefault(s => s.Camp.Id == camp.Camp.Key);
             if (stop != null)
             {
                 Route.Stops.Remove(stop);

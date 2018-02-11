@@ -12,7 +12,7 @@
                                     <ColumnDefinition Width="50" />
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding Camp.Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                <Button Grid.Column="1" Text="Done" TextColor="White" BackgroundColor="LightGray" Clicked="Handle_Clicked"></Button>
+                                <Switch Grid.Column="1" IsToggled="{Binding Complete}"></Switch>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

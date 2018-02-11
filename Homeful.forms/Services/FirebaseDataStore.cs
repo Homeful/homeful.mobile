@@ -77,8 +77,11 @@ namespace Homeful.mobile
         {
             if (id != null && CrossConnectivity.Current.IsConnected)
             {
-                var json = await client.GetStringAsync($"{Path}/{id}");
-                return await Task.Run(() => JsonConvert.DeserializeObject<T>(json));
+                var obj = await firebase.Child($"{Path}").Child($"{id}").OnceSingleAsync<T>();
+                obj.Id = id;
+                return obj;
+                //var json = await client.GetStringAsync($"{Path}/{id}");
+                //return await Task.Run(() => JsonConvert.DeserializeObject<T>(json));
             }
 
             return default(T);
@@ -105,6 +108,11 @@ namespace Homeful.mobile
         public async Task UpdateAsync(FirebaseObject<T> item)
         {
             await firebase.Child($"{Path}").PutAsync(item);
+        }
+
+        public async Task UpdateAsync(T item)
+        {
+            await firebase.Child($"{Path}").Child($"{item.Id}").PutAsync(item);
         }
 
         public async Task DeleteAsync(FirebaseObject<T> item)
