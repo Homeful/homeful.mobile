@@ -23,6 +23,18 @@ namespace Homeful.mobile
             await Navigation.PopToRootAsync();
         }
 
+        void OnCampSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var camp = args.SelectedItem as Camp;
+            if (camp == null)
+                return;
+
+            viewModel.OnCampSelected(camp);
+
+            // Manually deselect camp
+            CampsListView.SelectedItem = null;
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

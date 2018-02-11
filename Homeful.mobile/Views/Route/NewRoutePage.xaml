@@ -7,7 +7,7 @@
         <StackLayout Spacing="20" Padding="15">
             <Label Text="Name" FontSize="Medium" />
             <Entry Text="{Binding Route.Name}" FontSize="Small" />
-            <ListView x:Name="CampsListView" ItemsSource="{Binding CampSelection.Camps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding CampSelection.LoadCampsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="{Binding CampSelection.OnCampSelected}">
+            <ListView x:Name="CampsListView" ItemsSource="{Binding CampSelection.Camps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding CampSelection.LoadCampsCommand}" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnCampSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
