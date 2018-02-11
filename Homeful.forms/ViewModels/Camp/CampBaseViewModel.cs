@@ -9,7 +9,7 @@ namespace Homeful.mobile
 {
     public class CampBaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Camp> CampDataStore => DependencyService.Get<IDataStore<Camp>>() ?? new CampMockDataStore();
+        public IDataStore<Camp> CampDataStore => DependencyService.Get<IDataStore<Camp>>();
 
         bool isBusy = false;
         public bool IsBusy

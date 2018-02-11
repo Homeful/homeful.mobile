@@ -176,7 +176,12 @@
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
-  <Import Project="..\Homeful.mobile\Homeful.mobile.projitems" Label="Shared" Condition="Exists('..\Homeful.mobile\Homeful.mobile.projitems')" />
+  <ItemGroup>
+    <ProjectReference Include="..\Homeful.forms\Homeful.forms.csproj">
+      <Project>{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}</Project>
+      <Name>Homeful.forms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets')" />
   <Import Project="..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />

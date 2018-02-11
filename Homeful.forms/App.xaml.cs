@@ -12,19 +12,19 @@ namespace Homeful.mobile
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-            {
-                DependencyService.Register<ItemMockDataStore>();
-                DependencyService.Register<CampMockDataStore>();
-                DependencyService.Register<RouteMockDataStore>();
-            }
-            else
-            {
+            //if (UseMockDataStore)
+            //{
+            //    DependencyService.Register<ItemMockDataStore>();
+            //    DependencyService.Register<CampMockDataStore>();
+            //    DependencyService.Register<RouteMockDataStore>();
+            //}
+            //else
+            //{
                 //DependencyService.Register<ItemCloudDataStore>();
                 DependencyService.Register<CampDataStore>();
                 DependencyService.Register<RouteDataStore>();
                 //DependencyService.Register<RouteCloudDataStore>();
-            }
+            //}
 
             if (Device.RuntimePlatform == Device.iOS)
                 MainPage = new MainPage();

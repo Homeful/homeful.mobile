@@ -2,27 +2,26 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using Firebase.Database;
 using Xamarin.Forms;
 
 namespace Homeful.mobile
 {
     public class ItemsViewModel : ItemBaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<FirebaseObject<Item>> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Items = new ObservableCollection<FirebaseObject<Item>>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
             MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
             {
                 var _item = item as Item;
-                Items.Add(_item);
-                await ItemDataStore.AddAsync(_item);
+                Items.Add(await ItemDataStore.AddAsync(_item));
             });
         }
 

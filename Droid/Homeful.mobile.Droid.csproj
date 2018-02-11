@@ -199,7 +199,12 @@
     <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
-  <Import Project="..\Homeful.mobile\Homeful.mobile.projitems" Label="Shared" Condition="Exists('..\Homeful.mobile\Homeful.mobile.projitems')" />
+  <ItemGroup>
+    <ProjectReference Include="..\Homeful.forms\Homeful.forms.csproj">
+      <Project>{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}</Project>
+      <Name>Homeful.forms</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />

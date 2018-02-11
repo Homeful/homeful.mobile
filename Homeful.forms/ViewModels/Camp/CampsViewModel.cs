@@ -3,27 +3,27 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
+using Firebase.Database;
 using Xamarin.Forms;
+
 
 namespace Homeful.mobile
 {
     public class CampsViewModel : CampBaseViewModel
     {
-        public ObservableCollection<Camp> Camps { get; set; }
+        public ObservableCollection<FirebaseObject<Camp>> Camps { get; set; }
         public Command LoadCampsCommand { get; set; }
 
         public CampsViewModel()
         {
             Title = "Browse";
-            Camps = new ObservableCollection<Camp>();
+            Camps = new ObservableCollection<FirebaseObject<Camp>>();
             LoadCampsCommand = new Command(async () => await ExecuteLoadCampsCommand());
 
             MessagingCenter.Subscribe<NewCampPage, Camp>(this, "AddCamp", async (obj, camp) =>
             {
                 var _camp = camp as Camp;
-                Camps.Add(_camp);
-                await CampDataStore.AddAsync(_camp);
+                Camps.Add(await CampDataStore.AddAsync(_camp));
             });
         }
 
@@ -36,12 +36,8 @@ namespace Homeful.mobile
 
             try
             {
-                Camps.Clear();
-                IEnumerable<Camp> camps = await CampDataStore.ListAsync(true);
-                foreach (var camp in camps)
-                {
-                    Camps.Add(camp);
-                }
+                Camps = await CampDataStore.ListSubscribe();
+
             }
             catch (Exception ex)
             {

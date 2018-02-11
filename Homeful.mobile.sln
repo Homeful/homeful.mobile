@@ -1,11 +1,11 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Homeful.mobile", "Homeful.mobile\Homeful.mobile.shproj", "{0BCC0213-38CF-4478-ACC7-C94C02F888A3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homeful.mobile.iOS", "iOS\Homeful.mobile.iOS.csproj", "{00C90420-D363-4420-8A2E-03B2895E4995}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homeful.mobile.Droid", "Droid\Homeful.mobile.Droid.csproj", "{E0C2DC7E-A473-4CC8-947D-ABFC441EA5C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homeful.forms", "Homeful.forms\Homeful.forms.csproj", "{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,5 +41,17 @@ Global
 		{E0C2DC7E-A473-4CC8-947D-ABFC441EA5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0C2DC7E-A473-4CC8-947D-ABFC441EA5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0C2DC7E-A473-4CC8-947D-ABFC441EA5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|iPhone.Build.0 = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CFC70C-D307-486A-9FF3-B4C436EA9B57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

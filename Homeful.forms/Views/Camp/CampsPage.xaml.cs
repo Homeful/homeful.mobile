@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -38,7 +39,7 @@ namespace Homeful.mobile
         {
             base.OnAppearing();
 
-            if (viewModel.Camps.Count == 0)
+            if (viewModel.Camps.Count() == 0)
                 viewModel.LoadCampsCommand.Execute(null);
         }
     }
