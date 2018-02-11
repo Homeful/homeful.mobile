@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.NewCampPage" Title="New Camp">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" x:Class="Homeful.mobile.NewCampPage" Title="New Camp">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
+            <Label Text="Name" FontSize="Medium" />
             <Entry Text="{Binding Camp.Name}" FontSize="Small" />
+            <Grid>
+                <maps:Map WidthRequest="320" HeightRequest="200"
+                    x:Name="MyMap"
+                    IsShowingUser="true"
+                    MapType="Hybrid"
+                />
+                <Label Text="O" VerticalTextAlignment="Center" TextColor="Red" HorizontalTextAlignment="Center" InputTransparent="true"></Label>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
