@@ -36,7 +36,7 @@ namespace Homeful.mobile
             try
             {
                 Routes.Clear();
-                var routes = await RouteDataStore.GetAsync(true);
+                var routes = await RouteDataStore.ListAsync(true);
                 foreach (var route in routes)
                 {
                     Routes.Add(route);
