@@ -38,7 +38,7 @@ namespace Homeful.mobile
         {
             var btn = sender as Button;
             var stop = btn.BindingContext as Stop;
-            var currentStop = viewModel.Route.Stops.Where(s => s.Camp.Id == stop.Camp.Id).SingleOrDefault();
+            var currentStop = viewModel.Route.Stops.Where(s => s.Camp.Id == stop.Camp.Id).FirstOrDefault();
             currentStop.Complete = !stop.Complete;
             btn.BackgroundColor = currentStop.Complete ? Color.Green : Color.LightGray;
         }
