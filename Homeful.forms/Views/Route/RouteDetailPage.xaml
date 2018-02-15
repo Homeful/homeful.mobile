@@ -14,15 +14,17 @@
                                     <Grid Padding="15" HorizontalOptions="FillAndExpand">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="50" />
+                                            <ColumnDefinition Width="100" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Text="{Binding Camp.Name}" LineBreakMode="NoWrap" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                        <Switch Grid.Column="1" IsToggled="{Binding Complete}"></Switch>
+                                        <Label Grid.Column="0" Text="{Binding Camp.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                        <Button Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Start_Clicked" Text="Start" IsVisible="{Binding Open}" />
+                                        <Button Grid.Column="1" BorderColor="Green" BorderWidth="1" HeightRequest="30" TextColor="Green" Clicked="InProgress_Clicked" Text="In Progress" IsVisible="{Binding InProgress}" />
+                                        <Button Grid.Column="1" BorderColor="Firebrick" BorderWidth="1" HeightRequest="30" TextColor="Firebrick" Clicked="Complete_Clicked" Text="Done" IsVisible="{Binding Complete}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                    </ListView>                    
+                    </ListView>
                 </ViewCell>
             </TableSection>
         </TableRoot>

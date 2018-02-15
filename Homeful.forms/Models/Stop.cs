@@ -8,6 +8,14 @@ namespace Homeful.mobile
     {
         public Camp Camp { get; set; }
         public bool Complete { get; set; }
+        public bool InProgress { get; set; }
+        public bool Open
+        {
+            get
+            {
+                return !Complete && !InProgress;
+            }
+        }
         public DateTime? CompletedAt { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
