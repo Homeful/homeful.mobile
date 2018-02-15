@@ -9,7 +9,6 @@ namespace Homeful.mobile
         public MainPage()
         {
             Page campsPage = null;
-            Page aboutPage = null;
             Page routesPage = null;
 
             switch (Device.RuntimePlatform)

@@ -31,9 +31,13 @@ namespace Homeful.mobile
         }
         async void OnStopSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            Stop stop = args.SelectedItem as Stop;
+            var stop = args.SelectedItem as Stop;
+            if (stop == null)
+                return;
 
             await Navigation.PushAsync(new CampDetailPage(new CampDetailViewModel(viewModel.Route.Id, stop.Camp.Id)));
+
+            RouteStopsListView.SelectedItem = null;
         }
     }
 }
