@@ -46,24 +46,22 @@ namespace Homeful.mobile
             return items;
         }
 
-
         public async Task<ObservableCollection<FirebaseObject<T>>> ListSubscribe()
         {
-            
             ObservableCollection<FirebaseObject<T>> collection = new ObservableCollection<FirebaseObject<T>>(await ListAsync(true));
 
             firebase.Child($"{Path}").AsObservable<T>().Subscribe(e =>
             {
-                if (e.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete) 
+                if (e.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
                 {
-                    collection.Remove(collection.First(i => i.Key == e.Key));    
+                    collection.Remove(collection.First(i => i.Key == e.Key));
                 }
-                else if (collection.Any(i => i.Key == e.Key)) 
+                else if (collection.Any(i => i.Key == e.Key))
                 {
                     var index = collection.IndexOf(collection.First(i => i.Key == e.Key));
                     collection[index] = e;
                 }
-                else 
+                else
                 {
 
                     collection.Add(e);

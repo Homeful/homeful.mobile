@@ -6,6 +6,7 @@ namespace Homeful.mobile
     public class NewRouteViewModel
     {
         public SelectCampsViewModel SelectCampsViewModel { get; set; }
+
         public Route Route { get; set; }
 
         public NewRouteViewModel()
@@ -34,7 +35,8 @@ namespace Homeful.mobile
             var stop = new Stop()
             {
                 Complete = false,
-                Camp = camp.Camp.Object
+                Camp = camp.Camp.Object,
+                Id = camp.Camp.Object.Id
             };
             Route.Stops.Add(stop);
         }

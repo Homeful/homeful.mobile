@@ -2,6 +2,7 @@
 
 using Xamarin.Forms;
 using System.Linq;
+using Firebase.Database;
 
 namespace Homeful.mobile
 {
@@ -34,8 +35,8 @@ namespace Homeful.mobile
         void Start_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Button;
-            var stop = btn.BindingContext as Stop;
-            SetCurrentStop(stop);
+            var stop = btn.BindingContext as FirebaseObject<Stop>;
+            SetCurrentStop(stop.Object);
 
             currentStop.InProgress = true;
             currentStop.Complete = false;
@@ -43,27 +44,22 @@ namespace Homeful.mobile
         void InProgress_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Button;
-            var stop = btn.BindingContext as Stop;
-            SetCurrentStop(stop);
+            var stop = btn.BindingContext as FirebaseObject<Stop>;
+            SetCurrentStop(stop.Object);
             currentStop.InProgress = false;
             currentStop.Complete = true;
         }
         void Complete_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Button;
-            var stop = btn.BindingContext as Stop;
-            SetCurrentStop(stop);
+            var stop = btn.BindingContext as FirebaseObject<Stop>;
+            SetCurrentStop(stop.Object);
             if (clickCount < 1)
             {
                 TimeSpan tt = new TimeSpan(0, 0, 1);
                 Device.StartTimer(tt, ClickHandle);
             }
             clickCount++;
-            //var stop = btn.BindingContext as Stop;
-            //var currentStop = viewModel.Route.Stops.Where(s => s.Camp.Id == stop.Camp.Id).SingleOrDefault();
-
-            //currentStop.InProgress = false;
-            //currentStop.Complete = false;
         }
         private void SetCurrentStop(Stop stop)
         {
