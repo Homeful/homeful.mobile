@@ -4,8 +4,9 @@ using System.ComponentModel;
 
 namespace Homeful.mobile
 {
-    public class Stop : INotifyPropertyChanged
+    public class Stop : IFirebaseItem, INotifyPropertyChanged
     {
+        public string Id { get; set; }
         public Camp Camp { get; set; }
         public bool Complete { get; set; }
         public bool InProgress { get; set; }

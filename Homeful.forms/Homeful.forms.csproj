@@ -88,6 +88,7 @@
     <Compile Include="ViewModels\Route\RoutesViewModel.cs" />
     <Compile Include="ViewModels\Camp\SelectCampViewModel.cs" />
     <Compile Include="ViewModels\Camp\SelectCampsViewModel.cs" />
+    <Compile Include="Services\StopDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

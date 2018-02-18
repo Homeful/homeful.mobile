@@ -20,10 +20,11 @@ namespace Homeful.mobile
             //}
             //else
             //{
-                //DependencyService.Register<ItemCloudDataStore>();
-                DependencyService.Register<CampDataStore>();
-                DependencyService.Register<RouteDataStore>();
-                //DependencyService.Register<RouteCloudDataStore>();
+            //DependencyService.Register<ItemCloudDataStore>();
+            DependencyService.Register<CampDataStore>();
+            DependencyService.Register<RouteDataStore>();
+            DependencyService.Register<StopDataStore>();
+            //DependencyService.Register<RouteCloudDataStore>();
             //}
 
             if (Device.RuntimePlatform == Device.iOS)

@@ -7,7 +7,7 @@
             </TableSection>
             <TableSection Title="Stops">
                 <ViewCell>
-                    <ListView x:Name="RouteStopsListView" ItemsSource="{Binding Route.Stops}" VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemSelected="OnStopSelected">
+                    <ListView x:Name="RouteStopsListView" ItemsSource="{Binding Stops}" VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemSelected="OnStopSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -16,10 +16,10 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="100" />
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Text="{Binding Camp.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                        <Button Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Start_Clicked" Text="Start" IsVisible="{Binding Open}" />
-                                        <Button Grid.Column="1" BorderColor="Green" BorderWidth="1" HeightRequest="30" TextColor="Green" Clicked="InProgress_Clicked" Text="In Progress" IsVisible="{Binding InProgress}" />
-                                        <Button Grid.Column="1" BorderColor="Firebrick" BorderWidth="1" HeightRequest="30" TextColor="Firebrick" Clicked="Complete_Clicked" Text="Done" IsVisible="{Binding Complete}" />
+                                        <Label Grid.Column="0" Text="{Binding Object.Camp.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                        <Button Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Start_Clicked" Text="Start" IsVisible="{Binding Object.Open}" />
+                                        <Button Grid.Column="1" BorderColor="Green" BorderWidth="1" HeightRequest="30" TextColor="Green" Clicked="InProgress_Clicked" Text="In Progress" IsVisible="{Binding Object.InProgress}" />
+                                        <Button Grid.Column="1" BorderColor="Firebrick" BorderWidth="1" HeightRequest="30" TextColor="Firebrick" Clicked="Complete_Clicked" Text="Done" IsVisible="{Binding Object.Complete}" />
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
