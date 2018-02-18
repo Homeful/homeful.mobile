@@ -10,8 +10,9 @@ namespace Homeful.mobile
     {
         public FirebaseObject<Camp> Camp { get; set; }
         private FirebaseObject<Route> _route = null;
-        public FirebaseObject<Route> Route { 
-            get 
+        public FirebaseObject<Route> Route
+        {
+            get
             {
                 return _route;
             }
@@ -23,13 +24,13 @@ namespace Homeful.mobile
 
         public bool RouteAvailable
         {
-            get 
+            get
             {
-                return _route != null;    
-            }    
+                return _route != null;
+            }
         }
 
- 
+
         public ICommand LoadNextCamp { get; set; }
         public bool NextAvailable { get; set; } = false;
 
@@ -56,20 +57,20 @@ namespace Homeful.mobile
             Route = await r.GetObjectAsync(routeId); //(await r.ListAsync()).FirstOrDefault(a => a.Key == routeId);
             Camp = await c.GetObjectAsync(currentCampId);
 
-            if(IndexOfCurrentStop() + 1 < Route.Object.Stops.Count())
+            if (IndexOfCurrentStop() + 1 < Route.Object.Stops.Count())
             {
                 NextAvailable = true;
             }
-            else 
+            else
             {
-                NextAvailable = false;    
+                NextAvailable = false;
             }
         }
 
         private async void LoadNextcamp()
         {
             int index = IndexOfCurrentStop();
-            Camp = await CampDataStore.GetObjectAsync(Route.Object.Stops[index + 1].Camp.Id);
+            Camp = await CampDataStore.GetObjectAsync(Route.Object.Stops.ToList()[index + 1].Value.Camp.Id);
 
             int i = IndexOfCurrentStop();
             if (i + 1 < Route.Object.Stops.Count())
@@ -84,7 +85,7 @@ namespace Homeful.mobile
 
         private int IndexOfCurrentStop()
         {
-            return Route.Object.Stops.IndexOf(Route.Object.Stops.First(s => s.Camp.Id == Camp.Key));
+            return Route.Object.Stops.ToList().IndexOf(Route.Object.Stops.First(s => s.Value.Camp.Id == Camp.Key));
         }
     }
 }

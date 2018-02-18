@@ -36,21 +36,23 @@ namespace Homeful.mobile
             items = new List<FirebaseObject<T>>();
         }
 
-        public async Task<IEnumerable<FirebaseObject<T>>> ListAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<FirebaseObject<T>>> ListAsync(bool forceRefresh = false, string path = null)
         {
+            path = path == null ? Path : path;
             if (forceRefresh || items.Count() == 0)
             {
-                items = await firebase.Child($"{Path}").OnceAsync<T>();
+                items = await firebase.Child($"{path}").OnceAsync<T>();
             }
 
             return items;
         }
 
-        public async Task<ObservableCollection<FirebaseObject<T>>> ListSubscribe()
+        public async Task<ObservableCollection<FirebaseObject<T>>> ListSubscribe(string path = null)
         {
-            ObservableCollection<FirebaseObject<T>> collection = new ObservableCollection<FirebaseObject<T>>(await ListAsync(true));
+            path = path == null ? Path : path;
+            ObservableCollection<FirebaseObject<T>> collection = new ObservableCollection<FirebaseObject<T>>(await ListAsync(true, path));
 
-            firebase.Child($"{Path}").AsObservable<T>().Subscribe(e =>
+            firebase.Child($"{path}").AsObservable<T>().Subscribe(e =>
             {
                 if (e.EventType == Firebase.Database.Streaming.FirebaseEventType.Delete)
                 {
@@ -63,7 +65,6 @@ namespace Homeful.mobile
                 }
                 else
                 {
-
                     collection.Add(e);
                 }
             });
@@ -95,22 +96,25 @@ namespace Homeful.mobile
             return default(FirebaseObject<T>);
         }
 
-        public async Task<FirebaseObject<T>> AddAsync(T item)
+        public async Task<FirebaseObject<T>> AddAsync(T item, string path = null)
         {
+            path = path == null ? Path : path;
             if (item == null || !CrossConnectivity.Current.IsConnected)
                 return null;
 
-            return await firebase.Child($"{Path}").PostAsync(item);
+            return await firebase.Child($"{path}").PostAsync(item);
         }
 
-        public async Task UpdateAsync(FirebaseObject<T> item)
+        public async Task UpdateAsync(FirebaseObject<T> item, string path = null)
         {
-            await firebase.Child($"{Path}").PutAsync(item);
+            path = path == null ? Path : path;
+            await firebase.Child($"{path}").PutAsync(item);
         }
 
-        public async Task UpdateAsync(T item)
+        public async Task UpdateAsync(T item, string path = null)
         {
-            await firebase.Child($"{Path}").Child($"{item.Id}").PutAsync(item);
+            path = path == null ? Path : path;
+            await firebase.Child($"{path}").Child($"{item.Id}").PutAsync(item);
         }
 
         public async Task DeleteAsync(FirebaseObject<T> item)

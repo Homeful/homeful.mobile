@@ -3,6 +3,7 @@
 using Xamarin.Forms;
 using System.Linq;
 using Firebase.Database;
+using System.Reflection;
 
 namespace Homeful.mobile
 {
@@ -10,7 +11,7 @@ namespace Homeful.mobile
     {
         RouteDetailViewModel viewModel;
         private static int clickCount;
-        private Stop currentStop;
+        private FirebaseObject<Stop> currentStop;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
         public RouteDetailPage()
@@ -36,24 +37,25 @@ namespace Homeful.mobile
         {
             var btn = sender as Button;
             var stop = btn.BindingContext as FirebaseObject<Stop>;
-            SetCurrentStop(stop.Object);
-
-            currentStop.InProgress = true;
-            currentStop.Complete = false;
+            SetCurrentStop(stop);
+            currentStop.Object.InProgress = true;
+            currentStop.Object.Complete = false;
+            viewModel.UpdateStop(currentStop);
         }
         void InProgress_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Button;
             var stop = btn.BindingContext as FirebaseObject<Stop>;
-            SetCurrentStop(stop.Object);
-            currentStop.InProgress = false;
-            currentStop.Complete = true;
+            SetCurrentStop(stop);
+            currentStop.Object.InProgress = false;
+            currentStop.Object.Complete = true;
+            viewModel.UpdateStop(currentStop);
         }
         void Complete_Clicked(object sender, EventArgs e)
         {
             var btn = sender as Button;
             var stop = btn.BindingContext as FirebaseObject<Stop>;
-            SetCurrentStop(stop.Object);
+            SetCurrentStop(stop);
             if (clickCount < 1)
             {
                 TimeSpan tt = new TimeSpan(0, 0, 1);
@@ -61,16 +63,17 @@ namespace Homeful.mobile
             }
             clickCount++;
         }
-        private void SetCurrentStop(Stop stop)
+        private void SetCurrentStop(FirebaseObject<Stop> stop)
         {
-            currentStop = viewModel.Route.Stops.Where(s => s.Camp.Id == stop.Camp.Id).SingleOrDefault();
+            currentStop = viewModel.Stops.ToList().Where(s => s.Key == stop.Key).FirstOrDefault();
         }
         private bool ClickHandle()
         {
             if (clickCount > 1)
             {
-                currentStop.Complete = false;
-                currentStop.InProgress = false;
+                currentStop.Object.Complete = false;
+                currentStop.Object.InProgress = false;
+                viewModel.UpdateStop(currentStop);
             }
             clickCount = 0;
             return false;
@@ -84,6 +87,14 @@ namespace Homeful.mobile
             await Navigation.PushAsync(new CampDetailPage(new CampDetailViewModel(viewModel.Route.Id, stop.Camp.Id)));
 
             RouteStopsListView.SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Stops.Count() == 0)
+                viewModel.LoadStopsCommand.Execute(null);
         }
     }
 }

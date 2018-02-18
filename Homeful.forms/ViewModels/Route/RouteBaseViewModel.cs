@@ -10,6 +10,7 @@ namespace Homeful.mobile
     public class RouteBaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Route> RouteDataStore => DependencyService.Get<IDataStore<Route>>();
+        public IDataStore<Stop> StopDataStore => DependencyService.Get<IDataStore<Stop>>();
 
         bool isBusy = false;
         public bool IsBusy
