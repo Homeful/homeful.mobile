@@ -35,6 +35,12 @@ namespace Homeful.mobile
             await Navigation.PushAsync(new NewRoutePage());
         }
 
+        async void OnRemove(object sender, EventArgs e)
+        {
+            var route = ((MenuItem)sender).CommandParameter as FirebaseObject<Route>;
+            await viewModel.Remove(route);
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

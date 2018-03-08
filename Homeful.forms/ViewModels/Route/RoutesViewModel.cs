@@ -33,6 +33,12 @@ namespace Homeful.mobile
             });
         }
 
+        public async Task Remove(FirebaseObject<Route> route)
+        {
+            Routes.Remove(route);
+            await RouteDataStore.DeleteAsync($"routes/{route.Key}");
+        }
+
         async Task ExecuteLoadRoutesCommand()
         {
             if (IsBusy)

@@ -27,6 +27,12 @@ namespace Homeful.mobile
             });
         }
 
+        public async Task Remove(FirebaseObject<Camp> camp)
+        {
+            Camps.Remove(camp);
+            await CampDataStore.DeleteAsync($"camps/{camp.Key}");
+        }
+
         async Task ExecuteLoadCampsCommand()
         {
             if (IsBusy)

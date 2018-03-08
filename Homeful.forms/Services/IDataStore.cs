@@ -11,6 +11,7 @@ namespace Homeful.mobile
         Task UpdateAsync(FirebaseObject<T> item, string path = null);
         Task UpdateAsync(T item, string path = null);
         Task DeleteAsync(FirebaseObject<T> id);
+        Task DeleteAsync(string path = null);
         Task<T> GetAsync(string id);
         Task<FirebaseObject<T>> GetObjectAsync(string id);
         Task<IEnumerable<FirebaseObject<T>>> ListAsync(bool forceRefresh = false, string path = null);

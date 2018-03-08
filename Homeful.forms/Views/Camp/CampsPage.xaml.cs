@@ -35,6 +35,12 @@ namespace Homeful.mobile
             await Navigation.PushAsync(new NewCampPage());
         }
 
+        async void OnRemove(object sender, EventArgs e)
+        {
+            var camp = ((MenuItem)sender).CommandParameter as FirebaseObject<Camp>;
+            await viewModel.Remove(camp);
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

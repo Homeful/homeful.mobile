@@ -11,6 +11,7 @@ using Plugin.Connectivity;
 using Firebase.Database;
 using Firebase.Database.Query;
 using System.Collections.ObjectModel;
+using Xamarin.Forms.Internals;
 
 namespace Homeful.mobile
 {
@@ -120,6 +121,12 @@ namespace Homeful.mobile
         public async Task DeleteAsync(FirebaseObject<T> item)
         {
             await firebase.Child($"{Path}").Child($"{item.Key}").DeleteAsync();
+        }
+
+        public async Task DeleteAsync(string path = null)
+        {
+            path = path == null ? Path : path;
+            await firebase.Child($"{path}").DeleteAsync();
         }
         #endregion
     }
