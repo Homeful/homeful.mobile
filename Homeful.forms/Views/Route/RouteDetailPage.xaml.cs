@@ -89,6 +89,12 @@ namespace Homeful.mobile
             RouteStopsListView.SelectedItem = null;
         }
 
+        public void OnRemoveStop(object sender, EventArgs e)
+        {
+            var stop = ((MenuItem)sender).CommandParameter as FirebaseObject<Stop>;
+            viewModel.RemoveStop(stop);
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

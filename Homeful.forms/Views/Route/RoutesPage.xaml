@@ -8,7 +8,14 @@
             <ListView x:Name="RoutesListView" ItemsSource="{Binding Routes}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadRoutesCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnRouteSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Object.Name}" />
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="OnRemove" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="15" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Object.Name}" />
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

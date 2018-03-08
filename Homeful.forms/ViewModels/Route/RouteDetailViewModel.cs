@@ -48,6 +48,12 @@ namespace Homeful.mobile
             Title = Route?.Name;
         }
 
+        public async void RemoveStop(FirebaseObject<Stop> stop)
+        {
+            Stops.Remove(stop);
+            await StopDataStore.DeleteAsync($"routes/{Route.Id}/Stops/{stop.Key}");
+        }
+
         async Task ExecuteLoadStopsCommand()
         {
             if (IsBusy)
