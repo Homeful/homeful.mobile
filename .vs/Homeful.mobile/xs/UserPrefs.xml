@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{00C90420-D363-4420-8A2E-03B2895E4995}|Default">
+  <MonoDevelop.Ide.ItemProperties.Homeful.mobile.Droid AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Homeful.forms/ViewModels/Camp/CampsViewModel.cs">
+    <Files>
+      <File FileName="Homeful.forms/Views/Route/RouteDetailPage.xaml" Line="42" Column="28" />
+      <File FileName="Homeful.forms/Views/Route/RouteDetailPage.xaml.cs" Line="94" Column="54" />
+      <File FileName="Homeful.forms/Models/Route.cs" Line="13" Column="26" />
+      <File FileName="iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="Homeful.forms/ViewModels/Route/RouteBaseViewModel.cs" Line="12" Column="48" />
+      <File FileName="Homeful.forms/ViewModels/Route/RoutesViewModel.cs" Line="37" Column="10" />
+      <File FileName="Homeful.forms/ViewModels/Route/RouteDetailViewModel.cs" Line="44" Column="10" />
+      <File FileName="Droid/MainApplication.cs" Line="1" Column="1" />
+      <File FileName="Droid/MainActivity.cs" Line="30" Column="9" />
+      <File FileName="iOS/AppDelegate.cs" Line="18" Column="1" />
+      <File FileName="Homeful.forms/Views/Camp/CampsPage.xaml" Line="45" Column="19" />
+      <File FileName="Homeful.forms/Views/Camp/CampsPage.xaml.cs" Line="68" Column="74" />
+      <File FileName="Homeful.forms/obj/Debug/Homeful.forms.Views.Camp.CampsPage.xaml.g.cs" Line="1" Column="1" />
+      <File FileName="Homeful.forms/ViewModels/Camp/CampsViewModel.cs" Line="45" Column="22" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/conner/Dev/projects/homeful/Homeful.mobile/Homeful.forms/Views/Camp/CampsPage.xaml.cs" relfile="Homeful.forms/Views/Camp/CampsPage.xaml.cs" line="73" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Homeful.forms/ViewModels/Route/RouteDetailViewModel.cs" line="59" offsetX="592" offsetY="914" expression="stop.Object.Id" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Homeful.mobile.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.5E511BDF-385C-44D2-82BE-F7F75557CDE0" automaticSigning="False" />
+</Properties>

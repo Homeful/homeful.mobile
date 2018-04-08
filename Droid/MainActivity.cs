@@ -7,6 +7,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SegmentedControl.FormsPlugin.Android;
 
 namespace Homeful.mobile.Droid
 {
@@ -22,6 +23,7 @@ namespace Homeful.mobile.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             Xamarin.FormsMaps.Init(this, bundle);
+            SegmentedControlRenderer.Init();
 
             LoadApplication(new App());
         }

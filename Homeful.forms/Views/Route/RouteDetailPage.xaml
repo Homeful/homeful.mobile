@@ -3,8 +3,18 @@
     <TableView Intent="Form" HasUnevenRows="true">
         <TableRoot>
             <TableSection Title="Route Name">
-                <TextCell Text="{Binding Route.Name}" />
+                <ViewCell>
+                    <Grid Padding="15" HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="{Binding Route.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                        <Button x:Name="RouteStatusButton" Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Route_Start_Clicked" Text="Start" />                    
+                    </Grid>
+                </ViewCell>
             </TableSection>
+
             <TableSection Title="Stops">
                 <ViewCell>
                     <ListView x:Name="RouteStopsListView" ItemsSource="{Binding Stops}" VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemSelected="OnStopSelected">

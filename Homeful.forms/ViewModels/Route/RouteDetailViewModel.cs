@@ -34,6 +34,15 @@ namespace Homeful.mobile
         {
             await StopDataStore.UpdateAsync(stop.Object, $"routes/{Route.Id}/Stops/{stop.Key}");
         }
+        public async void UpdateRoute()
+        {
+            await RouteDataStore.UpdateAsync(Route, $"routes/{Route.Id}");
+        }
+        public async void UpdateRoute(FirebaseObject<Route> route)
+        {
+            await RouteDataStore.UpdateAsync(route.Object, $"routes/{route.Object.Id}");
+        }
+
         async void Stop_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             var stop = sender as FirebaseObject<Stop>;

@@ -24,8 +24,6 @@
             x:Name="MyMap"
             MapType="Hybrid"
             Grid.Row="1" />
-
-
         
         <TableView Intent="Form" Grid.Row="2">
             <TableRoot>
