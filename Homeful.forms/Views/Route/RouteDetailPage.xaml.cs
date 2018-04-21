@@ -6,6 +6,7 @@ using Firebase.Database;
 using System.Reflection;
 using System.Collections.Generic;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.Maps;
 
 namespace Homeful.mobile
 {
@@ -27,6 +28,7 @@ namespace Homeful.mobile
 
             viewModel = new RouteDetailViewModel(route);
             BindingContext = viewModel;
+            RouteStopsListView.IsVisible = true;
         }
 
         public RouteDetailPage(RouteDetailViewModel viewModel)
@@ -73,6 +75,45 @@ namespace Homeful.mobile
                 Device.StartTimer(tt, ClickHandle);
             }
             clickCount++;
+        }
+        public void Handle_ValueChanged(object sender, SegmentedControl.FormsPlugin.Abstractions.ValueChangedEventArgs e)
+        {
+            switch (e.NewValue)
+            {
+                case 0:
+                    //SegContent.Children.Clear();
+                    RouteStopsListView.IsVisible = true;
+                    CampsMapView.IsVisible = false;
+                    break;
+                case 1:
+                    //SegContent.Children.Clear();
+                    RouteStopsListView.IsVisible = false;
+                    CampsMapView.IsVisible = true;
+                    AddCampsToMap();
+                    break;
+            }
+        }
+        private void AddCampsToMap()
+        {
+            viewModel.Stops.ForEach(s => AddCampToMap(s.Object.Camp));
+        }
+
+        private void AddCampToMap(Camp camp)
+        {
+            var position = new Position(camp.Location.Lat, camp.Location.Lng); // Latitude, Longitude
+            var pin = new Pin
+            {
+                Type = PinType.SavedPin,
+                Position = position,
+                Label = camp.Name
+            };
+            MyMap.Pins.Add(pin);
+        }
+        private void SetMapDefaultPosition()
+        {
+            MyMap.MoveToRegion(
+                MapSpan.FromCenterAndRadius(
+                    new Position(36.1627, -86.7816), Distance.FromMiles(10)));
         }
         private void SetCurrentStop(FirebaseObject<Stop> stop)
         {
@@ -229,6 +270,7 @@ namespace Homeful.mobile
 
             if (viewModel.Stops.Count() == 0)
                 viewModel.LoadStopsCommand.Execute(null);
+            SetMapDefaultPosition();
         }
     }
 }
