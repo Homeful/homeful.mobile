@@ -39,7 +39,7 @@ namespace Homeful.mobile
 
         public async Task<IEnumerable<FirebaseObject<T>>> ListAsync(bool forceRefresh = false, string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             if (forceRefresh || items.Count() == 0)
             {
                 items = await firebase.Child($"{path}").OnceAsync<T>();
@@ -50,7 +50,7 @@ namespace Homeful.mobile
 
         public async Task<ObservableCollection<FirebaseObject<T>>> ListSubscribe(string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             ObservableCollection<FirebaseObject<T>> collection = new ObservableCollection<FirebaseObject<T>>(await ListAsync(true, path));
 
             firebase.Child($"{path}").AsObservable<T>().Subscribe(e =>
@@ -99,7 +99,7 @@ namespace Homeful.mobile
 
         public async Task<FirebaseObject<T>> AddAsync(T item, string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             if (item == null || !CrossConnectivity.Current.IsConnected)
                 return null;
 
@@ -108,13 +108,13 @@ namespace Homeful.mobile
 
         public async Task UpdateAsync(FirebaseObject<T> item, string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             await firebase.Child($"{path}").PutAsync(item);
         }
 
         public async Task UpdateAsync(T item, string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             await firebase.Child($"{path}").Child($"{item.Id}").PutAsync(item);
         }
 
@@ -125,7 +125,7 @@ namespace Homeful.mobile
 
         public async Task DeleteAsync(string path = null)
         {
-            path = path == null ? Path : path;
+            path = path ?? Path;
             await firebase.Child($"{path}").DeleteAsync();
         }
         #endregion

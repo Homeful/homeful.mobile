@@ -1,35 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.RouteDetailPage" Title="View Route">
-    <TableView Intent="Form" HasUnevenRows="true">
-        <TableRoot>
-            <TableSection Title="Route Name">
-                <TextCell Text="{Binding Route.Name}" />
-            </TableSection>
-            <TableSection Title="Stops">
-                <ViewCell>
-                    <ListView x:Name="RouteStopsListView" ItemsSource="{Binding Stops}" VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemSelected="OnStopSelected">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.ContextActions>
-                                        <MenuItem Clicked="OnRemoveStop" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-                                    </ViewCell.ContextActions>
-                                    <Grid Padding="15" HorizontalOptions="FillAndExpand">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Homeful.mobile.RouteDetailPage" Title="View Route">
+    <ContentPage.Content>
+        <StackLayout x:Name="SegContainer">
+            <StackLayout x:Name="SegContent">
+                <TableView Intent="Form" HasUnevenRows="true">
+                    <TableRoot>
+                        <TableSection Title="Route Name">
+                            <ViewCell>
+                                <Grid Padding="15" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Route.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                    <Button x:Name="RouteStatusButton" Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Route_Start_Clicked" Text="Start" />                    
+                                </Grid>
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection Title="Stops">
+                            <ViewCell>
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Padding="15" Spacing="12" Grid.Row="0">
+                                        <controls:SegmentedControl x:Name="SegControl" TintColor="#007AFF" SelectedSegment="0" ValueChanged="Handle_ValueChanged">
+                                          <controls:SegmentedControl.Children>
+                                            <controls:SegmentedControlOption Text="List" />
+                                            <controls:SegmentedControlOption Text="Map" />
+                                          </controls:SegmentedControl.Children>
+                                        </controls:SegmentedControl>
+                                    </StackLayout>
+                                    <ListView x:Name="RouteStopsListView" Grid.Row="1" ItemsSource="{Binding Stops}" VerticalOptions="FillAndExpand" HasUnevenRows="true" CachingStrategy="RecycleElement" ItemSelected="OnStopSelected">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <ViewCell.ContextActions>
+                                                        <MenuItem Clicked="OnRemoveStop" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                                                    </ViewCell.ContextActions>
+                                                    <Grid Padding="15" HorizontalOptions="FillAndExpand">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="100" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Column="0" Text="{Binding Object.Camp.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
+                                                        <Button Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Start_Clicked" Text="Start" IsVisible="{Binding Object.Open}" />
+                                                        <Button Grid.Column="1" BorderColor="Green" BorderWidth="1" HeightRequest="30" TextColor="Green" Clicked="InProgress_Clicked" Text="In Progress" IsVisible="{Binding Object.InProgress}" />
+                                                        <Button Grid.Column="1" BorderColor="Firebrick" BorderWidth="1" HeightRequest="30" TextColor="Firebrick" Clicked="Complete_Clicked" Text="Done" IsVisible="{Binding Object.Complete}" />
+                                                    </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <!--<StackLayout x:Name="CampsMapView" Grid.Row="1">-->
+                                    <Grid x:Name="CampsMapView" Grid.Row="1"> 
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="380"></RowDefinition>
+                                        </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Text="{Binding Object.Camp.Name}" LineBreakMode="NoWrap" VerticalTextAlignment="Center" Style="{DynamicResource ListItemTextStyle}" FontSize="16" />
-                                        <Button Grid.Column="1" BorderColor="Gray" BorderWidth="1" HeightRequest="30" TextColor="Gray" Clicked="Start_Clicked" Text="Start" IsVisible="{Binding Object.Open}" />
-                                        <Button Grid.Column="1" BorderColor="Green" BorderWidth="1" HeightRequest="30" TextColor="Green" Clicked="InProgress_Clicked" Text="In Progress" IsVisible="{Binding Object.InProgress}" />
-                                        <Button Grid.Column="1" BorderColor="Firebrick" BorderWidth="1" HeightRequest="30" TextColor="Firebrick" Clicked="Complete_Clicked" Text="Done" IsVisible="{Binding Object.Complete}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ViewCell>
-            </TableSection>
-        </TableRoot>
-    </TableView>
+                                        <maps:Map 
+                                            x:Name="MyMap"
+                                            IsShowingUser="true"
+                                            MapType="Street"
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                        />
+                                    <!--</StackLayout>-->
+                                    </Grid> 
+                                </Grid>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

@@ -1,24 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="Camps" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Homeful.mobile.CampsPage" x:Name="BrowseCampsPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" Title="Camps" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:controls="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="Homeful.mobile.CampsPage" x:Name="BrowseCampsPage">
    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddCamp_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="CampsListView" ItemsSource="{Binding Camps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadCampsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnCampSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.ContextActions>
-                                <MenuItem Clicked="OnRemove" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
-                            </ViewCell.ContextActions>
-                            <Grid Padding="15" HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding Object.Name}" />
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+        <StackLayout x:Name="SegContainer">
+            <StackLayout Padding="15" Spacing="12">
+                <controls:SegmentedControl x:Name="SegControl" TintColor="#007AFF" SelectedSegment="0" ValueChanged="Handle_ValueChanged">
+                  <controls:SegmentedControl.Children>
+                    <controls:SegmentedControlOption Text="List" />
+                    <controls:SegmentedControlOption Text="Map" />
+                  </controls:SegmentedControl.Children>
+                </controls:SegmentedControl>
+            </StackLayout>
+            <StackLayout x:Name="SegContent">
+                <ListView x:Name="CampsListView" ItemsSource="{Binding Camps}" VerticalOptions="FillAndExpand" HasUnevenRows="true" RefreshCommand="{Binding LoadCampsCommand}" IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnCampSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="OnRemove" CommandParameter="{Binding .}" Text="Delete" IsDestructive="True" />
+                                </ViewCell.ContextActions>
+                                <Grid Padding="15" HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding Object.Name}" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid x:Name="CampsMapView"> 
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions> 
+
+                    <maps:Map WidthRequest="320" HeightRequest="600" VerticalOptions="FillAndExpand"
+                        x:Name="MyMap"
+                        IsShowingUser="true"
+                        MapType="Street"
+                        Grid.Row="0"
+                    />
+                </Grid>
         </StackLayout>
+    </StackLayout>
     </ContentPage.Content>
 </ContentPage>
